@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <string.h>
+
+void menu()
+{
+	printf("********************************\n");
+	printf("****  1.play       2.wait   ****\n");
+	printf("********************************\n");
+}
+
+void game()
+{
+	int ret, guess;
+	//1.采用随机数生成数字 
+	ret = rand() % 100 + 1;
+	//2.猜数字 
+	while (1)
+	{
+		printf("请输入数字：");
+		scanf("%d", &guess);
+		if (guess>ret)
+		{
+			printf("你好笨，猜的大了\n");
+		}
+		else if (guess<ret)
+
+		{
+			printf("傻帽，猜小了\n");
+		}
+		else if (guess == ret)
+		{
+			printf("猜对了，奖励一巴掌\n");
+			break;
+		}
+	}
+}
+
+int main()
+ {
+	int input = 0;
+	srand((unsigned int)time(NULL));
+	//时间戳 
+	do
+	{
+		menu();
+		printf("请选择：");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();//猜数字游戏
+			system("cls");
+			break;
+		case 2:
+			printf("请稍等片刻！\n");
+			Sleep(3000);
+			break;
+		default:
+			printf("系统错误\n");
+			break;
+		}
+	} while (input);
+	return 0;
+}
